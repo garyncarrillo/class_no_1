@@ -15,7 +15,6 @@ app.post("/add", (req, res) => {
     res.send({
         result: parseInt(a) + parseInt(b)
     });
-    console.log(result)
 });
 
 app.listen(5000, () => {

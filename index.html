@@ -1,40 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>REST Client</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>REST Client</title>
-</head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+  <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
+  <script type="text/javascript" src="/public/js/index.js"></script>
 
-    .container {
-        height: 100vh;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;
-    }
-
-    label,
-    input[type="submit"] {
-        margin-top: 20px;
-    }
-</style>
-
-<body>
+  <body>
     <div class="container">
         <h1>Simple POST Form</h1>
         <form>
@@ -46,36 +21,5 @@
         </form>
         <div class="result">Click Add!</div>
     </div>
-    <script>
-        document.addEventListener("submit", sendData);
-
-        function sendData(e) {
-            e.preventDefault();
-            const a = document.querySelector("#num1").value;
-            const b = document.querySelector("#num2").value;
-            fetch("http://localhost:5000/add", {
-                    method: "POST",
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        a: parseInt(a),
-                        b: parseInt(b)
-                    })
-                })
-                .then(res => res.json())
-                .then(data => {
-                    const {
-                        result
-                    } = data;
-                    document.querySelector(
-                        ".result"
-                    ).innerText = `The sum is: ${result}`;
-                })
-                .catch(err => console.log(err));
-        }
-    </script>
-</body>
-
+  </body>
 </html>

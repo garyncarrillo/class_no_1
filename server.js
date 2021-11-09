@@ -6,6 +6,9 @@ const app = express();
 
 app.use(bodyParser.json());
 
+//add assests on folder public
+app.use('/public', express.static('public'));
+
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
